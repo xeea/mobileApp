@@ -4,7 +4,7 @@
       <body ng-controller="abilityCtrl">
       <div class="spacer" style="height: 100px;"></div>
       <ion-list>
-	  <!--
+	  
         <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
           <h2>Player 1</h2>
           <i class="icon ion-android-contact"></i>
@@ -17,10 +17,10 @@
           <h2>Player 3</h2>
           <i class="icon ion-android-contact"></i>
         </ion-item>
-		-->
+		
 		<!-- Dynamically add more attributes from the retrieved database data -->
-		<ion-item ng-repeat="team in jsonarray" ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>{{team.TeamName}}, Team #{{team.TeamID}}</h2>
+		<ion-item ng-repeat="player in jsonarray" ng-click = openPopover($event) class="item-avatar item-icon-right">
+          <h2>{{player.FirstName}} {{player.LastName}}</h2> <!-- Can add a WHERE clause to filter team Number -->
           <i class="icon ion-android-contact"></i>
         </ion-item>
 		
