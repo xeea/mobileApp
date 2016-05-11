@@ -130,4 +130,22 @@ angular.module('app.controllers', [])
     $scope.$on('popover.removed', function() {
       // Execute action
     });
+	
+	// Upon html startup, load in the custom club attributes
+	var init = function(){
+		$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getplayers.php", 
+				datatype: "json",
+				jsonp: false,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.jsonarray = JSON.parse(response);
+				}
+			});
+	};
+	init();
   })
