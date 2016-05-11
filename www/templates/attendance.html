@@ -3,7 +3,20 @@
             <h1 id="attendance-heading1" style="color:#000000;text-align:center;">Attendance</h1>
       <body ng-controller="attendanceCtrl">
       <div class="spacer" style="height: 100px;"></div>
-      <a ng-click = openPopover($event) class="button button-assertive  button-block">Player 1</a>
+      <ion-list>
+        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
+          <h2>Player 1</h2>
+          <i class="icon ion-android-contact"></i>
+        </ion-item>
+        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
+          <h2>Player 2</h2>
+          <i class="icon ion-android-contact"></i>
+        </ion-item>
+        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
+          <h2>Player 3</h2>
+          <i class="icon ion-android-contact"></i>
+        </ion-item>
+      </ion-list>
       </body>
     </ion-content>
 </ion-view>
