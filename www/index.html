@@ -33,38 +33,11 @@
     <script src="js/services.js"></script>
     <script src="js/directives.js"></script>
 	<script type="text/javascript" src="js/jquery-2.2.3.js"></script>
-	<!--
-	<script type="text/javascript">
-	// inserts data into the database on load --need to add on button click
-		$(document).ready(function()
-		 {
-		 var clubid="5"
-		 var teamname="The Lions";
-		 var dataString="clubID="+clubid+"&teamName="+teamname+"&insert=";
-		 if($.trim(clubid).length>0 & $.trim(teamname).length>0)
-		 {
-		 $.ajax({
-		 type: "POST",
-		 url:"http://catchthedragon.ca/insert.php",
-		 data: dataString,
-		 crossDomain: true,
-		 cache: false,
-		 success: function(data){
-		 if(data=="ok")
-		 {
-		 alert("inserted");
-		 $("#insert").val('submit');
-		 }
-		 else if(data=="error")
-		 {
-		 alert("error");
-		 }
-		 }
-		 });
-		 }return false;
-		 });
-	</script>
-	-->
+	<script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+	
     <!-- Only required for Tab projects w/ pages in multiple tabs 
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
