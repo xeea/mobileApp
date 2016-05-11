@@ -1,15 +1,8 @@
 <ion-view title="Ability" id="page8">
     <ion-content padding="true" class="has-header">
-        <form class="list">
-            <ion-item class="range range-positive">Speed
-                <input type="range" value="3" min="1" max="5">
-            </ion-item>
-            <ion-item class="range range-positive">Power
-                <input type="range" value="3" min="1" max="5">
-            </ion-item>
-            <ion-item class="range range-positive">Agility
-                <input type="range" value="3" min="1" max="5">
-            </ion-item>
-        </form>
+      <h1 id="ability-heading1" style="color:#000000;text-align:center;">Ability</h1>
+      <body ng-controller="abilityCtrl">
+      <div class="spacer" style="height: 100px;"></div>
+      <a ng-click = openPopover($event) class="button button-assertive  button-block">Player 1</a>
     </ion-content>
 </ion-view>

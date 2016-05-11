@@ -1,12 +1,8 @@
 <ion-view title="Attitude" id="page7">
     <ion-content padding="true" class="has-header">
-        <form class="list">
-            <ion-item class="range range-positive">Attitude
-                <input type="range" value="3" min="1" max="5">
-            </ion-item>
-            <label class="item item-input">
-                <span class="input-label">Notes</span><textarea placeholder=""> </textarea>
-            </label>
-        </form>
+      <h1 id="attitude-heading1" style="color:#000000;text-align:center;">Attitude</h1>
+      <body ng-controller="attitudeCtrl">
+      <div class="spacer" style="height: 100px;"></div>
+      <a ng-click = openPopover($event) class="button button-assertive  button-block">Player 1</a>
     </ion-content>
 </ion-view>
