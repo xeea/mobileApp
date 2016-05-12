@@ -130,8 +130,11 @@ angular.module('app.controllers', [])
     $scope.$on('popover.removed', function() {
       // Execute action
     });
-	
-	// Upon html startup, load in the custom club attributes
+  })
+  
+  .controller('retrievePlayersCtrl', function($scope) {
+	  
+	// Upon controller startup, load in the custom club attributes
 	var init = function(){
 		$.ajax({
 				type: "GET",
