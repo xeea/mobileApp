@@ -156,7 +156,7 @@ angular.module('app.controllers', [])
 		
 		$.ajax({
 			type: "GET",
-			url:"http://catchthedragon.ca/getteams.php", 
+			url:"http://catchthedragon.ca/getattributes.php", 
 			datatype: "json",
 			jsonp: false,
 			crossDomain: true,
