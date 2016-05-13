@@ -147,13 +147,30 @@ angular.module('app.controllers', [])
 			success: function(response){		
 				// alert(response);
 				
-				$scope.jsonarray = JSON.parse(response);
+				$scope.playerArray = JSON.parse(response);
 			},
 			error: function(){
 				alert("The request to the server could not be completed. Try again later.");
 			}
-			
+		});
+		
+		$.ajax({
+			type: "GET",
+			url:"http://catchthedragon.ca/getteams.php", 
+			datatype: "json",
+			jsonp: false,
+			crossDomain: true,
+			cache: false,
+			success: function(response){		
+				// alert(response);
+				
+				$scope.attributeArray = JSON.parse(response);
+			},
+			error: function(){
+				alert("The request to the server could not be completed. Try again later.");
+			}
 		});
 	};
+	
 	init();
   })
