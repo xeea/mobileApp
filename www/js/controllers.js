@@ -136,20 +136,42 @@ angular.module('app.controllers', [])
 	  
 	// Upon controller startup, load in the custom club attributes
 	var init = function(){
+		
 		$.ajax({
-				type: "GET",
-				url:"http://catchthedragon.ca/getplayers.php", 
-				datatype: "json",
-				jsonp: false,
-				crossDomain: true,
-				cache: false,
-				success: function(response){		
-					// alert(response);
-					
-					$scope.jsonarray = JSON.parse(response);
-				}
-			});
+			type: "GET",
+			url:"http://catchthedragon.ca/getplayers.php", 
+			datatype: "json",
+			jsonp: false,
+			crossDomain: true,
+			cache: false,
+			success: function(response){		
+				// alert(response);
+				
+				$scope.playerArray = JSON.parse(response);
+			},
+			error: function(){
+				alert("The request to the server could not be completed. Try again later.");
+			}
+		});
+		
+		$.ajax({
+			type: "GET",
+			url:"http://catchthedragon.ca/getattributes.php", 
+			datatype: "json",
+			jsonp: false,
+			crossDomain: true,
+			cache: false,
+			success: function(response){		
+				// alert(response);
+				
+				$scope.attributeArray = JSON.parse(response);
+			},
+			error: function(){
+				alert("The request to the server could not be completed. Try again later.");
+			}
+		});
 	};
+	
 	init();
   })
   
