@@ -13,8 +13,8 @@
 			</ion-item>
 			
 			<!-- Dynamically add more attributes from the retrieved database data -->
-			<ion-item ng-repeat="attribute in attributeArray" class="range range-positive">{{attribute.TeamName}}
-			  <input type="range" value="3" min="1" max={{attribute.ClubID}}>
+			<ion-item ng-repeat="attribute in attributeArray" class="range range-positive">{{attribute.Name}}
+			  <input type="range" value="3" min="1" max={{attribute.Value}}>
 			</ion-item>
 		
 		  </form>

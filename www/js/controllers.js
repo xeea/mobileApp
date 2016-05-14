@@ -4,10 +4,6 @@ angular.module('app.controllers', [])
 
 })
 
-/*.controller('attendanceCtrl', function($scope) {
-
-})*/
-
 .controller('attitudeCtrl', function($scope) {
 
 })
@@ -132,6 +128,35 @@ angular.module('app.controllers', [])
     });
   })
   
+  .controller('getcoachteams', function($scope){
+	  
+	// Upon controller startup, load in the custom club attributes
+	var init = function(){
+		
+		// $_GET   ........
+		
+		$.ajax({
+			type: "GET",
+			url:"http://catchthedragon.ca/getcoachteamslazyedition.php", 
+			datatype: "jsonp",
+			data: "{CoachID:" + "5" + "}", // Replace '5' with $scope.coachID or whatever we call the logged in coach ID
+			jsonp: false,
+			crossDomain: true,
+			cache: false,
+			success: function(response){		
+				// alert(response);
+				
+				$scope.teamArray = JSON.parse(response);
+			},
+			error: function(){
+				alert("Get Teams failed. The request to the server could not be completed. Try again later.");
+			}
+		});
+	};
+	
+	init();
+  })
+  
   .controller('retrievePlayersCtrl', function($scope) {
 	  
 	// Upon controller startup, load in the custom club attributes
@@ -140,7 +165,7 @@ angular.module('app.controllers', [])
 		$.ajax({
 			type: "GET",
 			url:"http://catchthedragon.ca/getplayers.php", 
-			datatype: "json",
+			datatype: "jsonp",
 			jsonp: false,
 			crossDomain: true,
 			cache: false,
@@ -150,14 +175,14 @@ angular.module('app.controllers', [])
 				$scope.playerArray = JSON.parse(response);
 			},
 			error: function(){
-				alert("The request to the server could not be completed. Try again later.");
+				alert("Get Players failed. The request to the server could not be completed. Try again later.");
 			}
 		});
 		
 		$.ajax({
 			type: "GET",
 			url:"http://catchthedragon.ca/getattributes.php", 
-			datatype: "json",
+			datatype: "jsonp",
 			jsonp: false,
 			crossDomain: true,
 			cache: false,
@@ -167,7 +192,7 @@ angular.module('app.controllers', [])
 				$scope.attributeArray = JSON.parse(response);
 			},
 			error: function(){
-				alert("The request to the server could not be completed. Try again later.");
+				alert("Get Attributes failed. The request to the server could not be completed. Try again later.");
 			}
 		});
 	};
