@@ -199,3 +199,34 @@ angular.module('app.controllers', [])
 	
 	init();
   })
+  
+  .controller('submitEvaluationCtrl', function($scope) {
+	  
+	$scope.submit = function() {
+		//inserts data into db  
+		var clubid="5"
+		var teamname="The Lions";
+		var dataString="clubID="+clubid+"&teamName="+teamname+"&insert=";
+		
+		if($.trim(clubid).length>0 & $.trim(teamname).length>0)
+		{
+			$.ajax({
+				type: "POST",
+				url:"http://catchthedragon.ca/insert.php",
+				data: dataString,
+				crossDomain: true,
+				cache: false,
+				success: function(data){
+					if(data=="ok")
+					{
+						alert("inserted");
+					}
+					else if(data=="error")
+					{
+						alert("error");
+					}
+				}
+			});
+		}
+	};
+  })

@@ -1,6 +1,6 @@
 <ion-view title="Attendance" id="page6">
     <ion-content padding="true" class="has-header">
-            <h1 id="attendance-heading1" style="color:#000000;text-align:center;">Attendance</h1>
+      <h1 id="attendance-heading1" style="color:#000000;text-align:center;">Attendance</h1>
       <body ng-controller="attendanceCtrl">
       <div class="spacer" style="height: 100px;"></div>
       <ion-list class="player-list">
@@ -16,14 +16,17 @@
           <h2>Player 3</h2>
           <i class="icon ion-android-contact"></i>
         </ion-item>
-		
 			<!-- Dynamically add more attributes from the retrieved database data -->
 			<ion-item ng-repeat="player in playerArray" ng-click = openPopover($event) class="item-avatar item-icon-right">
 			  <h2>{{player.FirstName}} {{player.LastName}} (Team: {{player.TeamName}})</h2> <!-- Can add an IF clause to filter team Number -->
 			  <i class="icon ion-android-contact"></i>
 			</ion-item>
-			
       </ion-list>
+		<div ng-controller="submitEvaluationCtrl">
+			<input type="button" id="submit" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
+		</div>
       </body>
+	  
+	  
     </ion-content>
 </ion-view>
