@@ -130,9 +130,34 @@ angular.module('app.controllers', [])
   
   .controller('retrievePlayersCtrl', function($scope) {
 	  
+	// Get Technical Director Teams for their club
+	var clubid="5" // !!!!!!!!!!! Replace 'Team 14' with $scope.teamname !!!!!!!!!!!
+	var dataString="ClubID="+clubid+"&select=";
+
+	if($.trim(clubid).length>0){
+		$.ajax({
+			type: "GET",
+			url:"http://catchthedragon.ca/gettechteams.php", 
+			data: dataString, 
+			datatype: "jsonp",
+			jsonp: true,
+			crossDomain: true,
+			cache: false,
+			success: function(response){		
+				// alert(response);
+				
+				$scope.playerArray = JSON.parse(response);
+			},
+			error: function(){
+				alert("Get Technical Director Teams failed. The request to the server could not be completed. Try again later.");
+			}
+		});
+	}
+	  
 	// Upon controller startup, load in the team players and custom club attributes 
 	var init = function(){ 
 		
+		// Get Players on a Team
 		var teamname="Team 14" // !!!!!!!!!!! Replace 'Team 14' with $scope.teamname !!!!!!!!!!!
 		var dataString="TeamName="+teamname+"&select=";
 		
@@ -142,7 +167,7 @@ angular.module('app.controllers', [])
 				url:"http://catchthedragon.ca/getplayers.php", 
 				data: dataString, 
 				datatype: "jsonp",
-				jsonp: false,
+				jsonp: true,
 				crossDomain: true,
 				cache: false,
 				success: function(response){		
@@ -156,13 +181,17 @@ angular.module('app.controllers', [])
 			});
 		}
 		
+		// Get attributes for this club
+		var teamname="Team 14" // !!!!!!!!!!! Replace 'Team 14' with $scope.teamname !!!!!!!!!!!
+		var dataString="TeamName="+teamname+"&select=";
+		
 		if($.trim(teamname).length>0){
 			$.ajax({
 				type: "GET",
 				url:"http://catchthedragon.ca/getattributes.php", 
-				// data: dataString, 
+				data: dataString, 
 				datatype: "jsonp",
-				jsonp: false,
+				jsonp: true,
 				crossDomain: true,
 				cache: false,
 				success: function(response){		
@@ -185,7 +214,8 @@ angular.module('app.controllers', [])
 	// Upon controller startup, load in the custom club attributes
 	var init = function(){
 		
-		var coachid="5" // !!!!!!!!!!! Replace '5' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
+		// Get Coach Teams
+		var coachid="6" // !!!!!!!!!!! Replace '6' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
 		var dataString="CoachID="+coachid+"&select=";
 		
 		if($.trim(coachid).length>0){
@@ -194,7 +224,7 @@ angular.module('app.controllers', [])
 				url:"http://catchthedragon.ca/getcoachteams.php", 
 				datatype: "jsonp",
 				data: dataString, 
-				jsonp: false,
+				jsonp: true,
 				crossDomain: true,
 				cache: false,
 				success: function(response){		
@@ -203,7 +233,31 @@ angular.module('app.controllers', [])
 					$scope.teamArray = JSON.parse(response);
 				},
 				error: function(){
-					alert("Get Teams failed. The request to the server could not be completed. Try again later.");
+					alert("Get Coach Teams failed. The request to the server could not be completed. Try again later.");
+				}
+			});
+		}
+		
+		// Get Coach Name
+		var coachid="6" // !!!!!!!!!!! Replace '6' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
+		var dataString="CoachID="+coachid+"&select=";
+		
+		if($.trim(coachid).length>0){
+			$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getcoachname.php", 
+				datatype: "jsonp",
+				data: dataString, 
+				jsonp: true,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.coachDetails = JSON.parse(response);
+				},
+				error: function(){
+					alert("Get Coach Name failed. The request to the server could not be completed. Try again later.");
 				}
 			});
 		}

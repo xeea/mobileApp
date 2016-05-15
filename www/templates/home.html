@@ -1,13 +1,14 @@
 <ion-view title="Home" id="page9">
     <ion-content padding="true" class="has-header">
 	<div ng-controller="getcoachteams">
-        <h1 id="home-heading4" style="color:#000000;text-align:center;">Coach name</h1>
+        <h1 id="home-heading4" style="color:#000000;text-align:center;">{{coachDetails.FirstName}} {{coachDetails.LastName}} </h1>
         <div class="spacer" style="height: 100px;"></div>
-        <a ui-sref="playerMenu" id="home-button3" class="button button-assertive  button-block">Team 1</a>
 		
+		<!-- Repeat this for all teams that the coach has -->
 		<div ng-repeat="team in teamArray">
-			<a ui-sref="playerMenu" id="home-button3" class="button button-assertive  button-block">{{team}}</a>
+			<a ui-sref="playerMenu" id="home-button4" class="button button-assertive  button-block">{{team.TeamName}}</a>
 		</div>
+		
 	</div>
     </ion-content>
 </ion-view>
