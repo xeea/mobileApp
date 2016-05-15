@@ -6,9 +6,7 @@
         <a ui-sref="playerMenu" id="home-button3" class="button button-assertive  button-block">Team 1</a>
 		
 		<div ng-repeat="team in teamArray">
-			<div ng-if="team.CoachID == '5'"> <!--  Replace so this is in the PHP file, or replace with actual login ID -->
-				<a ui-sref="playerMenu" id="home-button3" class="button button-assertive  button-block">{{team.CoachID}} {{team.TeamID}}</a>
-			</div>
+			<a ui-sref="playerMenu" id="home-button3" class="button button-assertive  button-block">{{team}}</a>
 		</div>
 	</div>
     </ion-content>

@@ -128,73 +128,85 @@ angular.module('app.controllers', [])
     });
   })
   
+  .controller('retrievePlayersCtrl', function($scope) {
+	  
+	// Upon controller startup, load in the team players and custom club attributes 
+	var init = function(){ 
+		
+		var teamname="Team 14" // !!!!!!!!!!! Replace 'Team 14' with $scope.teamname !!!!!!!!!!!
+		var dataString="TeamName="+teamname+"&select=";
+		
+		if($.trim(teamname).length>0){
+			$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getplayers.php", 
+				data: dataString, 
+				datatype: "jsonp",
+				jsonp: false,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.playerArray = JSON.parse(response);
+				},
+				error: function(){
+					alert("Get Players failed. The request to the server could not be completed. Try again later.");
+				}
+			});
+		}
+		
+		if($.trim(teamname).length>0){
+			$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getattributes.php", 
+				// data: dataString, 
+				datatype: "jsonp",
+				jsonp: false,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.attributeArray = JSON.parse(response);
+				},
+				error: function(){
+					alert("Get Attributes failed. The request to the server could not be completed. Try again later.");
+				}
+			});
+		}
+	};
+	
+	init();
+  })
+    
   .controller('getcoachteams', function($scope){
 	  
 	// Upon controller startup, load in the custom club attributes
 	var init = function(){
 		
-		// $_GET   ........
+		var coachid="5" // !!!!!!!!!!! Replace '5' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
+		var dataString="CoachID="+coachid+"&select=";
 		
-		$.ajax({
-			type: "GET",
-			url:"http://catchthedragon.ca/getcoachteamslazyedition.php", 
-			datatype: "jsonp",
-			data: "{CoachID:" + "5" + "}", // Replace '5' with $scope.coachID or whatever we call the logged in coach ID
-			jsonp: false,
-			crossDomain: true,
-			cache: false,
-			success: function(response){		
-				// alert(response);
-				
-				$scope.teamArray = JSON.parse(response);
-			},
-			error: function(){
-				alert("Get Teams failed. The request to the server could not be completed. Try again later.");
-			}
-		});
-	};
-	
-	init();
-  })
-  
-  .controller('retrievePlayersCtrl', function($scope) {
-	  
-	// Upon controller startup, load in the custom club attributes
-	var init = function(){
-		
-		$.ajax({
-			type: "GET",
-			url:"http://catchthedragon.ca/getplayers.php", 
-			datatype: "jsonp",
-			jsonp: false,
-			crossDomain: true,
-			cache: false,
-			success: function(response){		
-				// alert(response);
-				
-				$scope.playerArray = JSON.parse(response);
-			},
-			error: function(){
-				alert("Get Players failed. The request to the server could not be completed. Try again later.");
-			}
-		});
-		
-		$.ajax({
-			type: "GET",
-			url:"http://catchthedragon.ca/getattributes.php", 
-			datatype: "jsonp",
-			jsonp: false,
-			crossDomain: true,
-			cache: false,
-			success: function(response){		
-				// alert(response);
-				
-				$scope.attributeArray = JSON.parse(response);
-			},
-			error: function(){
-				alert("Get Attributes failed. The request to the server could not be completed. Try again later.");
-			}
-		});
+		if($.trim(coachid).length>0){
+			$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getcoachteams.php", 
+				datatype: "jsonp",
+				data: dataString, 
+				jsonp: false,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.teamArray = JSON.parse(response);
+				},
+				error: function(){
+					alert("Get Teams failed. The request to the server could not be completed. Try again later.");
+				}
+			});
+		}
 	};
 	
 	init();

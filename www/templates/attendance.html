@@ -18,7 +18,7 @@
         </ion-item>
 			<!-- Dynamically add more attributes from the retrieved database data -->
 			<ion-item ng-repeat="player in playerArray" ng-click = openPopover($event) class="item-avatar item-icon-right">
-			  <h2>{{player.FirstName}} {{player.LastName}} (Team: {{player.TeamName}})</h2> <!-- Can add an IF clause to filter team Number -->
+			  <h2>{{playerArray[0]}}</h2> <!-- Can add an IF clause to filter team Number -->
 			  <i class="icon ion-android-contact"></i>
 			</ion-item>
       </ion-list>
