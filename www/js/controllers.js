@@ -214,34 +214,11 @@ angular.module('app.controllers', [])
 	// Upon controller startup, load in the custom club attributes
 	var init = function(){
 		
-		// Get Coach Teams
+		// SQL setup info
 		var coachid="6" // !!!!!!!!!!! Replace '6' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
 		var dataString="CoachID="+coachid+"&select=";
-		
-		if($.trim(coachid).length>0){
-			$.ajax({
-				type: "GET",
-				url:"http://catchthedragon.ca/getcoachteams.php", 
-				datatype: "jsonp",
-				data: dataString, 
-				jsonp: true,
-				crossDomain: true,
-				cache: false,
-				success: function(response){		
-					// alert(response);
-					
-					$scope.teamArray = JSON.parse(response);
-				},
-				error: function(){
-					alert("Get Coach Teams failed. The request to the server could not be completed. Try again later.");
-				}
-			});
-		}
 		
 		// Get Coach Name
-		var coachid="6" // !!!!!!!!!!! Replace '6' with $scope.coachID or whatever we call the logged in coach ID !!!!!!!!!!!
-		var dataString="CoachID="+coachid+"&select=";
-		
 		if($.trim(coachid).length>0){
 			$.ajax({
 				type: "GET",
@@ -258,6 +235,27 @@ angular.module('app.controllers', [])
 				},
 				error: function(){
 					alert("Get Coach Name failed. The request to the server could not be completed. Try again later.");
+				}
+			});
+		}
+		
+		// Get Coach Teams
+		if($.trim(coachid).length>0){
+			$.ajax({
+				type: "GET",
+				url:"http://catchthedragon.ca/getcoachteams.php", 
+				datatype: "jsonp",
+				data: dataString, 
+				jsonp: true,
+				crossDomain: true,
+				cache: false,
+				success: function(response){		
+					// alert(response);
+					
+					$scope.teamArray = JSON.parse(response);
+				},
+				error: function(){
+					alert("Get Coach Teams failed. The request to the server could not be completed. Try again later.");
 				}
 			});
 		}
