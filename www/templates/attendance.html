@@ -1,32 +1,42 @@
-<ion-view title="Attendance" id="page6">
+<ion-view view-title="Attendance">
     <ion-content padding="true" class="has-header">
-      <h1 id="attendance-heading1" style="color:#000000;text-align:center;">Attendance</h1>
-      <body ng-controller="attendanceCtrl">
-      <div class="spacer" style="height: 100px;"></div>
-      <ion-list class="player-list">
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>Player 1</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>Player 2</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>Player 3</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-			<!-- Dynamically add more attributes from the retrieved database data -->
-			<ion-item ng-repeat="player in playerArray" ng-click = openPopover($event) class="item-avatar item-icon-right">
-			  <h2>{{player.FirstName}} {{player.LastName}}</h2> <!-- Can add an IF clause to filter team Number -->
-			  <i class="icon ion-android-contact"></i>
-			</ion-item>
-      </ion-list>
-		<div ng-controller="submitEvaluationCtrl">
-			<input type="button" id="submit" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
-		</div>
-      </body>
-	  
-	  
+		<h1 id="attendance-heading" style="color:#000000;text-align:center;">Attendance</h1>
+		<div class="spacer" style="height: 100px;"></div>
+		
+		<ion-list>
+			<div ng-repeat="group in attendanceGroup">
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(group)}" ng-click="toggleGroup(group)">
+					{{group.name}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+				</ion-item>
+				<form class="list">
+				<ion-item class="item-accordion" ng-repeat="value in group.values" ng-show="isGroupShown(group)">
+				{{value}}
+					<div ng-bind-html="">
+					</div>
+			    </ion-item>
+				</form>
+			</div>
+		</ion-list>
+		
+		<!--
+		<ion-list>
+			<div ng-repeat="player in players">
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(group)}" ng-click="toggleGroup(group)">
+					{{player.FirstName}} {{player.LastName}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+				</ion-item>
+				<ion-item class="item-accordion"
+						ng-repeat="item in group.items"
+						ng-show="isGroupShown(group)">
+				Hello, Joey.
+			  </ion-item>
+			</div>
+		</ion-list>
+		-->
     </ion-content>
 </ion-view>
+<!-- <div ng-controller="submitEvaluationCtrl">
+			<input type="button" id="submit" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
+		</div> -->
+		

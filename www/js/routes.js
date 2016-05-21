@@ -7,83 +7,80 @@ angular.module('app.routes', [])
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-    
+    .state('app', {
+		url: '/app',
+		abstract: true,
+		templateUrl: 'templates/app.html',
+		controller: 'AppCtrl'
+	})
+	
+	.state('app.home', {
+		url: '/home',
+		views: {
+			'menuContent': {
+				templateUrl: 'templates/home.html',
+				controller: 'HomeCtrl'
+			}
+		}
+	})
+	
+	.state('app.activity', {
+		url: '/activity/:teamName',
+		views: {
+			'menuContent': {
+				templateUrl: 'templates/activity.html',
+				controller: 'ActivityCtrl'
+			}
+		}
+	})
   
+	.state('login', {
+		url: '/login',
+		templateUrl: 'templates/login.html',
+		controller: 'LoginCtrl'
+	})
+  
+    .state('app.evaluation', {
+		url: '/evaluation/:teamName',
+		abstract: true,
+		views: {
+			'menuContent': {
+				templateUrl: 'templates/evaluation.html',
+				controller: 'EvaluationCtrl'
+			}
+		}
+	})
 
-      .state('tabsController', {
-    url: '/tabsPage',
-    templateUrl: 'templates/tabsController.html',
-    abstract:true
-  })
+	.state('app.evaluation.attendance', {
+		url: '/attendance',
+		views: {
+			'tab-attendance': {
+				templateUrl: 'templates/attendance.html',
+				controller: 'AttendanceCtrl'
+			}
+		}
+	})
 
-  .state('login', {
-    url: '/login',
-    templateUrl: 'templates/login.html',
-    controller: 'loginCtrl'
-  })
+	.state('app.evaluation.attitude', {
+		url: '/attitude',
+		views: {
+			'tab-attitude': {
+				templateUrl: 'templates/attitude.html',
+				controller: 'AttitudeCtrl'
+			}
+		}
+	})
 
-  .state('tabsController.attendance', {
-    url: '/attendance',
-    views: {
-      'tab1': {
-        templateUrl: 'templates/attendance.html',
-        controller: 'attendanceCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.attitude', {
-    url: '/attitude',
-    views: {
-      'tab2': {
-        templateUrl: 'templates/attitude.html',
-        controller: 'attitudeCtrl'
-      }
-    }
-  })
-
-  .state('tabsController.ability', {
-    url: '/ability',
-    views: {
-      'tab3': {
-        templateUrl: 'templates/ability.html',
-        controller: 'abilityCtrl'
-      }
-    }
-  })
-
-  .state('home', {
-    url: '/home',
-    templateUrl: 'templates/home.html',
-    controller: 'homeCtrl'
-  })
-
-  .state('playerMenu', {
-    url: '/playerMenu',
-    templateUrl: 'templates/playerMenu.html',
-    controller: 'playerMenuCtrl'
-  })
-
-  .state('page', {
-    url: '/page11',
-    templateUrl: 'templates/page.html',
-    controller: 'pageCtrl'
-  })
-
-  .state('team1', {
-    url: '/roster',
-    templateUrl: 'templates/team1.html',
-    controller: 'team1Ctrl'
-  })
-
-  .state('viewStats', {
-    url: '/stats',
-    templateUrl: 'templates/viewStats.html',
-    controller: 'viewStatsCtrl'
-  })
+	.state('app.evaluation.ability', {
+		url: '/ability',
+		views: {
+			'tab-ability': {
+				templateUrl: 'templates/ability.html',
+				controller: 'AbilityCtrl'
+			}
+		}
+	})
 
 $urlRouterProvider.otherwise('/login')
-
-  
 
 });

@@ -1,27 +1,12 @@
-<ion-view title="Attitude" id="page7">
+<ion-view view-title="Attitude">
     <ion-content padding="true" class="has-header">
-      <h1 id="attitude-heading1" style="color:#000000;text-align:center;">Attitude</h1>
-      <body ng-controller="attitudeCtrl">
-      <div class="spacer" style="height: 100px;"></div>
-      <ion-list class="player-list">
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>Benjamin Franklin</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>George Washington</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-        <ion-item ng-click = openPopover($event) class="item-avatar item-icon-right">
-          <h2>The Fresh Prince of Bel-Air</h2>
-          <i class="icon ion-android-contact"></i>
-        </ion-item>
-		
-			<!-- Dynamically add more attributes from the retrieved database data -->
-			<ion-item ng-repeat="player in playerArray" ng-click = openPopover($event) class="item-avatar item-icon-right">
-			  <h2>{{player.FirstName}} {{player.LastName}}</h2> <!-- Can add an IF clause to filter team Number -->
-			  <i class="icon ion-android-contact"></i>
+		<h1 id="attitude-heading" style="color:#000000;text-align:center;">Attitude</h1>
+		<div class="spacer" style="height: 100px;"></div>
+		<ion-list>
+			<ion-item ng-repeat="player in players" class="item-avatar item-icon-right">
+				{{player.FirstName}} {{player.LastName}}
+				<i class="icon ion-android-contact"></i>
 			</ion-item>
-      </ion-list>
+		</ion-list>
     </ion-content>
 </ion-view>
