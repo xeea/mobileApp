@@ -59,9 +59,7 @@ angular.module('app.controllers', [])
 	.controller('EvaluationCtrl', function($scope, $sce, $state, $stateParams, $http, TeamEvaluationService) {
 		$scope.players = {}; 
 		$scope.attributes = {};
-		$scope.attendanceGroup = [];
-		$scope.attitudeGroup = [];
-		$scope.abilityGroup = [];
+		$scope.playerGroup = []; // holds all the players
 		$scope.attendanceStatus = ["Present", "Late", "Absent"];
 		// alert($state.params.teamName);
 		$http({
@@ -72,12 +70,16 @@ angular.module('app.controllers', [])
 			$scope.players = response.data;
 			
 			for (var i = 0; i < $scope.players.length; i++) {
-				$scope.attendanceGroup[i] = {
-					name: $scope.players[i].FirstName + " " + $scope.players[i].LastName,
-					values: []
+				$scope.playerGroup[i] = {
+					name: $scope.players[i].FirstName + " " + $scope.players[i].LastName, // Assign the player a name
+					attendanceGroup:[], //  Holds a players attendance values
+					attitudeGroup: [], //  Holds a players attitude values
+					abilityGroup:[] //  Holds a players ability values
 				};
+				
+				// Assign the attendance values
 				for(var j = 0; j < $scope.attendanceStatus.length; j++){
-					$scope.attendanceGroup[i].values.push( "There are " + j + " sub-items here." ); // Push a button element in here
+					$scope.playerGroup[i].attendanceGroup.push( "There are " + j + " sub-items here." ); // Push a button element in here
 				}
 			}
 			// alert(JSON.stringify($scope.players, null, 4));

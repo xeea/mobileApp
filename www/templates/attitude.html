@@ -2,11 +2,22 @@
     <ion-content padding="true" class="has-header">
 		<h1 id="attitude-heading" style="color:#000000;text-align:center;">Attitude</h1>
 		<div class="spacer" style="height: 100px;"></div>
+
 		<ion-list>
-			<ion-item ng-repeat="player in players" class="item-avatar item-icon-right">
-				{{player.FirstName}} {{player.LastName}}
-				<i class="icon ion-android-contact"></i>
-			</ion-item>
+			<div ng-repeat="player in playerGroup">
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					{{player.name}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
+				</ion-item>
+				<form class="list">
+				<ion-item class="item-accordion" ng-repeat="attendValue in player.attitudeGroup" ng-show="isGroupShown(player)">
+				{{attendValue}}
+					<div ng-bind-html="">
+					</div>
+			    </ion-item>
+				</form>
+			</div>
 		</ion-list>
+		
     </ion-content>
 </ion-view>

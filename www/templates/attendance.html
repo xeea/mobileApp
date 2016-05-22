@@ -4,14 +4,14 @@
 		<div class="spacer" style="height: 100px;"></div>
 		
 		<ion-list>
-			<div ng-repeat="group in attendanceGroup">
-				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(group)}" ng-click="toggleGroup(group)">
-					{{group.name}}
-					<i class="icon ion-android-contact" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+			<div ng-repeat="player in playerGroup">
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					{{player.name}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
 				</ion-item>
 				<form class="list">
-				<ion-item class="item-accordion" ng-repeat="value in group.values" ng-show="isGroupShown(group)">
-				{{value}}
+				<ion-item class="item-accordion" ng-repeat="attValue in player.attendanceGroup" ng-show="isGroupShown(player)">
+				{{attValue}}
 					<div ng-bind-html="">
 					</div>
 			    </ion-item>
