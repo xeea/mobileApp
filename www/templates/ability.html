@@ -1,23 +1,25 @@
-<ion-view view-title="Ability">
+<ion-view view-title="Evaluation">
     <ion-content padding="true" class="has-header">
 		<h1 id="ability-heading" style="color:#000000;text-align:center;">Ability</h1>
 		<div class="spacer" style="height: 100px;"></div>
-
+		
 		<ion-list>
-			<div ng-repeat="player in playerGroup">
-				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
-					{{player.name}}
-					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
+			<div ng-repeat="player in players">
+				<ion-item class="item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					{{player.firstName + " " + player.lastName}}
+					<i class="icon" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
 				</ion-item>
-				<form class="list">
-				<ion-item class="item-accordion" ng-repeat="abilValue in player.abilityGroup" ng-show="isGroupShown(player)">
-				{{abilValue}}
-					<div ng-bind-html="">
-					</div>
-			    </ion-item>
-				</form>
+				<ion-list class="abilityList">
+					<ion-item class="range range-positive item-accordion" ng-repeat="attribute in player.attributes | startFrom : 3" ng-show="isGroupShown(player)">
+						{{attribute.name}} <input type="range" value="3" min="1" max="5" ng-model="player.attributes[$index + 3].value"
+						ng-value="3">
+					</ion-item>
+					<label class="item item-input item-accordion" ng-show="isGroupShown(player)">
+						<span class="input-label">Notes:</span><textarea placeholder=""></textarea>
+					</label>
+				</ion-list>
 			</div>
 		</ion-list>
-		
+	<input type="button" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
     </ion-content>
 </ion-view>

@@ -1,42 +1,25 @@
-<ion-view view-title="Attendance">
-    <ion-content padding="true" class="has-header">
+<ion-view view-title="Evaluation">
+	<ion-content padding="true" class="has-header">
 		<h1 id="attendance-heading" style="color:#000000;text-align:center;">Attendance</h1>
 		<div class="spacer" style="height: 100px;"></div>
 		
 		<ion-list>
-			<div ng-repeat="player in playerGroup">
-				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
-					{{player.name}}
-					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
-				</ion-item>
-				<form class="list">
-				<ion-item class="item-accordion" ng-repeat="attValue in player.attendanceGroup" ng-show="isGroupShown(player)">
-				{{attValue}}
-					<div ng-bind-html="">
-					</div>
-			    </ion-item>
-				</form>
-			</div>
-		</ion-list>
-		
-		<!--
-		<ion-list>
 			<div ng-repeat="player in players">
-				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(group)}" ng-click="toggleGroup(group)">
-					{{player.FirstName}} {{player.LastName}}
-					<i class="icon ion-android-contact" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
+				<ion-item class="item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					<i class="icon" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
+					{{player.firstName + " " + player.lastName}}
 				</ion-item>
-				<ion-item class="item-accordion"
-						ng-repeat="item in group.items"
-						ng-show="isGroupShown(group)">
-				Hello, Joey.
-			  </ion-item>
+				<ion-radio name="{{player.firstName + ' ' + player.lastName}}" ng-repeat="attendance in attendanceValues" 
+					class="item-accordion" ng-model="player.attributes[0].value" ng-value="attendance.value" 
+					ng-show="isGroupShown(player)">
+						{{attendance.text}}
+				</ion-radio>
+				<label class="item item-input item-accordion" ng-show="isGroupShown(player)">
+					<span class="input-label">Notes: </span><textarea placeholder="" ng-model="player.notes[0].attendance" 
+						ng-value=""> </textarea>
+				</label>
 			</div>
 		</ion-list>
-		-->
-    </ion-content>
+		<input type="button" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
+	</ion-content>
 </ion-view>
-<!-- <div ng-controller="submitEvaluationCtrl">
-			<input type="button" id="submit" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
-		</div> -->
-		

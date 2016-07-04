@@ -1,0 +1,23 @@
+<ion-popover-view>
+  <ion-content>
+	  <div>
+		  <form class="list">
+			<ion-item class="range range-positive">Speed
+			  <input type="range" value="3" min="1" max="5">
+			</ion-item>
+			<ion-item class="range range-positive">Power
+			  <input type="range" value="3" min="1" max="5">
+			</ion-item>
+			<ion-item class="range range-positive">Agility
+			  <input type="range" value="3" min="1" max="5">
+			</ion-item>
+			
+			<!-- Dynamically add more attributes from the retrieved database data -->
+			<ion-item ng-repeat="attribute in attributeArray" class="range range-positive">{{attribute.Name}}
+			  <input type="range" value="3" min="1" max={{attribute.Value}}>
+			</ion-item>
+		
+		  </form>
+		</div>
+    </ion-content>
+</ion-popover-view>

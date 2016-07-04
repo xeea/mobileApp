@@ -1,0 +1,10 @@
+<ion-view view-title="Team Menu">
+    <ion-content padding="true" class="has-header">
+        <h1 id="playerMenu-heading5" style="color:#000000;text-align:center;">{{teamName}}</h1>
+        <div style="margin: 0px; line-height: 250px; border: 1px solid rgb(238, 238, 238); border-radius: 3px; text-align: center; background-color: rgb(255, 255, 255);">
+            <i class="icon ion-image" style="font-size: 64px; color: rgb(136, 136, 136); vertical-align: middle;"></i>
+        </div>
+        <a ui-sref="viewStats" id="playerMenu-button4" class="button button-assertive  button-block">View</a>
+        <a ng-repeat="type in types" ng-click="evaluationClicked(type)" id="{{ types[$index] }}" class="button button-assertive button-block">{{types[$index]}}</a>
+    </ion-content>
+</ion-view>
