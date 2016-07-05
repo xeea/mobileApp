@@ -1,0 +1,26 @@
+<ion-view view-title="Ability">
+    <ion-content padding="true" class="has-header">
+		<h1 id="ability-heading" style="color:#000000;text-align:center;">Ability</h1>
+		<div class="spacer" style="height: 100px;"></div>
+
+		<ion-list>
+			<div ng-repeat="player in playerGroup">
+				<!-- Creates a click-able Player Menu. -->
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					{{player.name}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
+				</ion-item>
+				<!-- Creates the Sub-Menu for the Player based on the abilityGroup. -->
+				<form class="attenList">
+					<div ng-repeat="abilValue in player.abilityGroup">
+						<ion-item class="range range-positive" class="item-accordion" ng-show="isGroupShown(player)"> {{abilValue}}
+							<input type="range" value="3" min="1" max="5">
+						</ion-item>
+					</div>
+				</form>
+				
+			</div>
+		</ion-list>
+		
+    </ion-content>
+</ion-view>

@@ -8,24 +8,50 @@ angular.module('app.routes', [])
   // Each state's controller can be found in controllers.js
   $stateProvider
     .state('app', {
-		url: '/app',
+		url: '/',
 		abstract: true,
 		templateUrl: 'templates/app.html',
 		controller: 'AppCtrl'
 	})
 	
 	.state('app.home', {
-		url: '/home',
+		url: 'home',
 		views: {
 			'menuContent': {
 				templateUrl: 'templates/home.html',
 				controller: 'HomeCtrl'
 			}
+		},
+		resolve: {
+			coachName: ['CoachInfoFactory', function(CoachInfoFactory) {
+				return CoachInfoFactory.retrieveCoachName();
+			}],
+			coachTeams: ['CoachInfoFactory', function(CoachInfoFactory) {
+				return CoachInfoFactory.retrieveCoachTeams();
+			}]
 		}
 	})
+
+    .state('app.admin', {
+      url: '/admin',
+      views: {
+        'menuContent': {
+          templateUrl: 'templates/admin.html',
+          controller: 'AdminCtrl'
+        }
+      },
+      resolve: {
+        coachName: ['CoachInfoFactory', function(CoachInfoFactory) {
+          return CoachInfoFactory.retrieveCoachName();
+        }],
+        coachTeams: ['CoachInfoFactory', function(CoachInfoFactory) {
+          return CoachInfoFactory.retrieveCoachTeams();
+        }]
+      }
+    })
 	
 	.state('app.activity', {
-		url: '/activity/:teamName',
+		url: 'activity/',
 		views: {
 			'menuContent': {
 				templateUrl: 'templates/activity.html',
@@ -41,13 +67,19 @@ angular.module('app.routes', [])
 	})
   
     .state('app.evaluation', {
-		url: '/evaluation/:teamName',
+		url: 'evaluation',
 		abstract: true,
+		cache: false,
 		views: {
 			'menuContent': {
 				templateUrl: 'templates/evaluation.html',
 				controller: 'EvaluationCtrl'
 			}
+		},
+		resolve: {
+			initializeEvaluation: ['TeamEvaluationFactory', function(TeamEvaluationFactory) {
+				return TeamEvaluationFactory.initializeEvaluation();
+			}]
 		}
 	})
 

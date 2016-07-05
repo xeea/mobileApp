@@ -1,0 +1,33 @@
+<ion-view view-title="Attendance">
+    <ion-content padding="true" class="has-header">
+		<h1 id="attendance-heading" style="color:#000000;text-align:center;">Attendance</h1>
+		<div class="spacer" style="height: 100px;"></div>
+		
+		<ion-list>
+			<div ng-repeat="player in playerGroup">
+				<!-- Creates a click-able Player Menu. -->
+				<ion-item class="item-avatar item-icon-right" ng-class="{active: isGroupShown(player)}" ng-click="toggleGroup(player)">
+					{{player.name}}
+					<i class="icon ion-android-contact" ng-class="isGroupShown(player) ? 'ion-minus' : 'ion-plus'"></i>
+				</ion-item>
+				<!-- Creates the Sub-Menu for the Player based on the attendanceGroup. -->
+				<form class="attenList">
+					<div ng-repeat="attenValue in player.attendanceGroup">
+						<ion-radio class="item-accordion" ng-show="isGroupShown(player)">
+							{{attenValue}}
+						</ion-radio>
+					</div>
+					<label class="item item-input" class="item-accordion" ng-show="isGroupShown(player)">
+					    <span class="input-label">Notes: </span><textarea placeholder=""> </textarea>
+					</label>
+				</form>
+				
+			</div>
+		</ion-list>
+		
+    </ion-content>
+</ion-view>
+<!-- <div ng-controller="submitEvaluationCtrl">
+			<input type="button" id="submit" class="button button-assertive button-block" ng-click="submit()" value="Submit"/>
+	 </div> -->
+		
