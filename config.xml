@@ -38,7 +38,6 @@
   <preference name="KeyboardDisplayRequiresUserAction" value = "false" />
   <preference name="MediaPlaybackRequiresUserAction" value="true" />
   <preference name="AllowInlineMediaPlayback" value ="true" />
-  <preference name = "BackupWebStorage" value="false" />
   <preference name = "SuppressIncrementalRendering" value="true" />
   <preference name = "GapBetweenPages" value="0" />
   <preference name = "PageLength" value="0" />
@@ -51,7 +50,7 @@
 	<param name = "ios-package" value="org.apache.cordova.device.Device" />
   </feature>
   
-  <platform name="android-package">
+  <platform name="android">
     <access origin="*"/>
     <icon src="resources/android/icon/drawable-ldpi-icon.png" density="ldpi"/>
     <icon src="resources/android/icon/drawable-mdpi-icon.png" density="mdpi"/>
