@@ -9,4 +9,4 @@ should use zeptojs.com instead of jquerry since we sont need to run the app on d
 
 TD: zia@test.com	BCIT4900c
 
-problem creatign provisioning file and threviously createed provisionning profile is expired
+problem creatign provisioning file and threviously createed provisionning profile is expired``
