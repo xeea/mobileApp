@@ -1,0 +1,12 @@
+decided to use phonegap-build for an IOS devie 
+it has a learning curve.
+should use zeptojs.com instead of jquerry since we sont need to run the app on different browsers its smaller than jquerry.
+
+-create files and test run normally index.html js and css
+-upload to github
+-need apple developers account for key to build for IOS
+-when done you can either download the mobile version on your computer and transfer it to your phone or take a screen-shot of the code and install/download with the Goggles QR code
+
+TD: zia@test.com	BCIT4900c
+
+problem creatign provisioning file and threviously createed provisionning profile is expired
