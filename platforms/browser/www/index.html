@@ -4,9 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
-
+    
+    <link href="css/custom.css" type="text/css" rel="stylesheet">
     <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <script src="lib/ionic/js/ionic.bundle.js"></script>
+	
 
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
@@ -37,14 +39,15 @@
     <script type="text/javascript">
         app.initialize();
     </script>
+	<script src="phonegap.js"></script>
 
     <!-- Only required for Tab projects w/ pages in multiple tabs
     <script src="lib/ionicuirouter/ionicUIRouter.js"></script>
     -->
 
   </head>
-  <body ng-app="app" class="platform-browser platform-cordova platform-webview">
+  <body ng-app="app">
 	<ion-nav-view></ion-nav-view>
   </body>
-  </body>
+  
 </html>

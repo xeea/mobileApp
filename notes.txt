@@ -10,3 +10,7 @@ should use zeptojs.com instead of jquerry since we sont need to run the app on d
 TD: zia@test.com	BCIT4900c
 
 problem creatign provisioning file and threviously createed provisionning profile is expired``
+
+ok so now i have realized that we have to use ionic to give our app a native  lokk and feel and use phonegap build to deploy versions on the mobile paltforms.
+
+to use ionic i can use similar code from he previous files and some from the desktop version to make the 3 view pages: goal for today!!

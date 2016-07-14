@@ -1,13 +1,13 @@
 <ion-view view-title="Tabs Controller">
-    <ion-tabs class="tabs-assertive tabs-icon-top">
-		<ion-tab title="Attendance" icon="ion-ios-people" ng-click="attendanceClicked()">
+	<ion-tabs class="tabs-assertive tabs-icon-top">
+		<ion-tab title="Attendance" icon="ion-ios-people" ui-sref="app.evaluation.attendance">
 			<ion-nav-view name="tab-attendance"></ion-nav-view>
 		</ion-tab>
-		<ion-tab title="Attitude" icon="ion-happy" ng-click="attitudeClicked()">
+		<ion-tab title="Attitude" icon="ion-happy" ui-sref="app.evaluation.attitude">
 			<ion-nav-view name="tab-attitude"></ion-nav-view>
 		</ion-tab>
-		<ion-tab title="Ability" icon="ion-ios-football" ng-click="abilityClicked()">
+		<ion-tab title="Ability" icon="ion-ios-football" ui-sref="app.evaluation.ability">
 			<ion-nav-view name="tab-ability"></ion-nav-view>
 		</ion-tab>
-    </ion-tabs>
+	</ion-tabs>
 </ion-view>

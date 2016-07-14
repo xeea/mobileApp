@@ -1,8 +1,23 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.ionicframework.soccerprofile741499" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.BCIT4900.soccer pro-file" version="1.0.0" versionCode="1" xmlns="http://www.w3.org.ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <preference name="loglevel" value="DEBUG" />
     <feature name="Whitelist">
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Device">
+        <param name="android-package" value="org.apache.cordova.device.Device" />
+    </feature>
+    <feature name="SplashScreen">
+        <param name="android-package" value="org.apache.cordova.splashscreen.SplashScreen" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="StatusBar">
+        <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
+        <param name="onload" value="true" />
+    </feature>
+    <feature name="Keyboard">
+        <param name="android-package" value="io.ionic.keyboard.IonicKeyboard" />
         <param name="onload" value="true" />
     </feature>
     <icon density="ldpi" src="resources/android/icon/drawable-ldpi-icon.png" />
@@ -23,13 +38,13 @@
     <splash density="port-xhdpi" src="resources/android/splash/drawable-port-xhdpi-screen.png" />
     <splash density="port-xxhdpi" src="resources/android/splash/drawable-port-xxhdpi-screen.png" />
     <splash density="port-xxxhdpi" src="resources/android/splash/drawable-port-xxxhdpi-screen.png" />
-    <name>soccer-pro-file</name>
+    <name>Soccer Pro-File</name>
     <description>
-        An Ionic Framework and Cordova project.
-    </description>
-    <author email="you@example.com" href="http://example.com.com/">
-      Your Name Here
-    </author>
+        Soccer profile description
+  </description>
+    <author email="xeea.minhas@gmail.com" href="http://example.com.com/">
+      BCIT-4900
+  </author>
     <content src="index.html" />
     <access origin="*" />
     <access origin="http://catchthedragon.ca/*" />
@@ -41,4 +56,13 @@
     <preference name="android-minSdkVersion" value="16" />
     <preference name="BackupWebStorage" value="none" />
     <preference name="SplashScreen" value="screen" />
+    <preference name="Fullscreen" value="true" />
+    <preference name="EnableViewportScale" value="false" />
+    <preference name="KeyboardDisplayRequiresUserAction" value="false" />
+    <preference name="MediaPlaybackRequiresUserAction" value="true" />
+    <preference name="AllowInlineMediaPlayback" value="true" />
+    <preference name="SuppressIncrementalRendering" value="true" />
+    <preference name="GapBetweenPages" value="0" />
+    <preference name="PageLength" value="0" />
+    <preference name="UIWebViewDecelerationSpeed" value="fast" />
 </widget>
